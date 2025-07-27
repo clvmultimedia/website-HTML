@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLV Multimedia Academy</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+            scroll-behavior: smooth;
+        }
+        .hero-section {
+            background-image: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.733)), url("/static/images/banner1.jpg ");
+            background-size: cover;
+            background-position: center;
+        }
+        
+        .dropdown:hover .dropdown-menu {
+            display: block;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .course-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+        }
+        
+        .social-icon {
+            transition: all 0.3s ease;
+        }
+        
+        .social-icon:hover {
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <header class="bg-white shadow-md sticky top-0 z-50">
+        <div class="container mx-auto px-4 py-3">
+            <div class="flex justify-between items-center">
+                <!-- Logo và tên trường -->
+                <div class="flex items-center">
+                    <div class="mr-3">
+                        <img src="/static/images/logo CLV 2.jpg " class="w-[px] h-[50px] rounded" />
+                    </div>
+                    <div>
+                        <h1 class="text-xl font-bold text-[#8B4513] md:text-2xl">CÔNG TY CỔ PHẦN ĐÀO TẠO KỸ NĂNG</h1>
+                        <h2 class="text-lg font-semibold text-[#D2B48C] md:text-xl">CLV MULTIMEDIA ACADEMY</h2>
+                    </div>
+                </div>
+                
+                <!-- Menu hamburger cho mobile -->
+                <div class="md:hidden">
+                    <button id="menu-toggle" class="text-[#8B4513]">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16" />
+                        </svg>
+                    </button>
+                </div>
+                
+                <!-- Menu desktop -->
+                <nav class="hidden md:block">
+                    <ul class="flex space-x-11">
+                        <li><a href="#" class="text-xl text-[#8B4513] hover:text-[#D2B48C] font-medium">Trang chủ</a></li>
+                        <li><a href="#about" class="text-xl text-[#8B4513] hover:text-[#D2B48C] font-medium">Giới thiệu</a></li>
+                        <li class="dropdown relative">
+                            <a href="#courses" class=" text-xl text-[#8B4513] hover:text-[#D2B48C] font-medium flex items-center">
+                                Khóa Học
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                                </svg>
+                            </a>
+                            <ul class="dropdown-menu absolute hidden bg-white shadow-lg rounded-md py-2 w-48">
+                                <li><a href="#autocad" class="text-xl block px-4 py-2 text-[#8B4513] hover:bg-[#F5F5DC]">Autocad</a></li>
+                                <li><a href="#sofa" class="text-xl block px-4 py-2 text-[#8B4513] hover:bg-[#F5F5DC]">Vẽ Thiết kế SOFA</a></li>
+                                <li><a href="#inventor" class="text-xl block px-4 py-2 text-[#8B4513] hover:bg-[#F5F5DC]">Inventor</a></li>
+                                <li><a href="#solidworks" class="text-xl block px-4 py-2 text-[#8B4513] hover:bg-[#F5F5DC]">SolidWorks</a></li>
+                            </ul>
+                        </li>
+                        <li><a href="#admission" class="text-xl text-[#8B4513] hover:text-[#D2B48C] font-medium">Thông tin tuyển sinh</a></li>
+                        <li><a href="#contact" class="text-xl text-[#8B4513] hover:text-[#D2B48C] font-medium">Liên hệ</a></li>
+                    </ul>
+                </nav>
+            </div>
+            
+            <!-- Menu mobile -->
+            <div id="mobile-menu" class="hidden md:hidden mt-4 pb-4">
+                <ul class="space-y-3">
+                    <li><a href="#" class="block text-[#8B4513] hover:text-[#D2B48C] font-medium">Trang chủ</a></li>
+                    <li><a href="#about" class="block text-[#8B4513] hover:text-[#D2B48C] font-medium">Giới thiệu</a></li>
+                    <li>
+                        <button id="mobile-dropdown" class="flex justify-between items-center w-full text-[#8B4513] hover:text-[#D2B48C] font-medium">
+                            Khóa Học
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-4 w-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7" />
+                            </svg>
+                        </button>
+                        <ul id="mobile-dropdown-menu" class="hidden pl-4 mt-2 space-y-2">
+                            <li><a href="#autocad" class="block text-[#8B4513] hover:text-[#D2B48C]">Autocad</a></li>
+                            <li><a href="#sofa" class="block text-[#8B4513] hover:text-[#D2B48C]">Vẽ Thiết kế SOFA</a></li>
+                            <li><a href="#inventor" class="block text-[#8B4513] hover:text-[#D2B48C]">Inventor</a></li>
+                            <li><a href="#solidworks" class="block text-[#8B4513] hover:text-[#D2B48C]">SolidWorks</a></li>
+                        </ul>
+                    </li>
+                    <li><a href="#admission" class="block text-[#8B4513] hover:text-[#D2B48C] font-medium">Thông tin tuyển sinh</a></li>
+                    <li><a href="#contact" class="block text-[#8B4513] hover:text-[#D2B48C] font-medium">Liên hệ</a></li>
+                </ul>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero-section h-[500px] flex items-center justify-center text-white">
+        <div class="container mx-auto px-4 text-center">
+            <h1 class="text-4xl md:text-5xl font-bold mb-6">Cổng Thông Tin Tuyển Sinh</h1>
+            <p class="text-xl md:text-2xl mb-8 max-w-2xl mx-auto">Khởi đầu sự nghiệp thiết kế nội thất chuyên nghiệp cùng CLV Multimedia Academy</p>
+            <div class="flex flex-col md:flex-row justify-center space-y-4 md:space-y-0 md:space-x-6">
+                <a href="#admission" class="bg-[#8B4513] hover:bg-[#A0522D] text-white font-bold py-3 px-8 rounded-full transition duration-300 shadow-lg">Đăng ký ngay</a>
+                <a href="#" class="bg-transparent hover:bg-white hover:text-[#8B4513] text-white font-bold py-3 px-8 rounded-full border-2 border-white transition duration-300">Tải hồ sơ</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-[#8B4513] mb-2">Giới Thiệu</h2>
+                <div class="w-24 h-1 bg-[#D2B48C] mx-auto"></div>
+            </div>
+            
+            <div class="flex flex-col md:flex-row items-center gap-8">
+                <div class="md:w-1/2">
+                    <h3 class="text-2xl font-semibold text-[#8B4513] mb-4">Về CLV Multimedia Academy</h3>
+                    <p class="text-gray-700 mb-4">CLV Multimedia Academy là trung tâm đào tạo hàng đầu về thiết kế nội thất và các kỹ năng thiết kế 3D chuyên nghiệp. Với đội ngũ giảng viên giàu kinh nghiệm và cơ sở vật chất hiện đại, chúng tôi cam kết mang đến cho học viên những kiến thức và kỹ năng thực tiễn nhất.</p>
+                    
+                    <div class="mb-6">
+                        <h4 class="font-semibold text-[#8B4513] mb-2">Tầm nhìn</h4>
+                        <p class="text-gray-700">Trở thành đơn vị đào tạo hàng đầu về thiết kế nội thất và công nghệ 3D tại Việt Nam, đào tạo nguồn nhân lực chất lượng cao đáp ứng nhu cầu của thị trường lao động.</p>
+                    </div>
+                    
+                    <div>
+                        <h4 class="font-semibold text-[#8B4513] mb-2">Sứ mệnh</h4>
+                        <p class="text-gray-700">Cung cấp môi trường học tập chuyên nghiệp, trang bị kiến thức và kỹ năng thiết kế hiện đại, giúp học viên tự tin bước vào thị trường lao động và phát triển sự nghiệp.</p>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2 grid grid-cols-2 gap-4">
+                    <div class="rounded-lg overflow-hidden shadow-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+                            <rect width="400" height="300" fill="#f5f5f5"/>
+                            <rect x="50" y="50" width="300" height="200" fill="#D2B48C" rx="10"/>
+                            <rect x="70" y="70" width="260" height="160" fill="#f9f9f9" rx="5"/>
+                            <circle cx="200" cy="150" r="50" fill="#8B4513" opacity="0.7"/>
+                            <text x="200" y="155" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Campus</text>
+                        </svg>
+                    </div>
+                    <div class="rounded-lg overflow-hidden shadow-md">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 300" width="100%" height="100%">
+                            <rect width="400" height="300" fill="#f5f5f5"/>
+                            <rect x="50" y="50" width="300" height="200" fill="#8B4513" rx="10" opacity="0.7"/>
+                            <circle cx="120" cy="120" r="30" fill="#f9f9f9"/>
+                            <circle cx="200" cy="150" r="30" fill="#f9f9f9"/>
+                            <circle cx="280" cy="130" r="30" fill="#f9f9f9"/>
+                            <text x="200" y="220" font-family="Arial" font-size="14" fill="white" text-anchor="middle">Hoạt động sinh viên</text>
+                        </svg>
+                    </div>
+                    <div class="relative rounded-lg overflow-hidden shadow-md max-w-sm mx-auto">
+                        <!-- Hình ảnh -->
+                            <img src="/static/images/hinh co so vat chat.jpg" alt="Cơ sở vật chất"
+                            class="w-full h-64 object-cover md:h-80">
+                            <!-- Logo CLV trên góc trái -->
+                            <div class="absolute top-2 left-2 text-[#8B4513] font-bold text-2xl px-3 py-1 rounded-full shadow-none">
+                                CLV
+                                </div>
+                            <!-- Dòng chữ ở giữa đáy hình -->
+                            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg-opacity-60 text-white/ text-[#CC00CC] font-medium text-sm md:text-base px-3 py-1 rounded-t">
+                            Cơ sở vật chất
+                                </div>
+                            </div>
+                    <div class="relative rounded-lg overflow-hidden shadow-md max-w-sm mx-auto">
+                        <!-- Hình ảnh -->
+                            <img src="/static/images/phong hoc hien dai1.jpg" alt="Cơ sở vật chất"
+                            class="w-full h-64 object-cover md:h-80">
+                            <!-- Logo CLV trên góc trái -->
+                            <div class="absolute top-2 left-2 text-[#8B4513] font-bold text-2xl px-3 py-1 rounded-full shadow-none">
+                                CLV
+                                </div>
+                            <!-- Dòng chữ ở giữa đáy hình -->
+                            <div class="absolute bottom-0 left-1/2 transform -translate-x-1/2 bg text-[#CC00CC] text-base font-medium px-4 py-2 rounded-t whitespace-nowrap">
+                                Phòng học hiện đại
+                                </div>
+                            </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Courses Section -->
+    <section id="courses" class="py-16 bg-gray-50">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-[#8B4513] mb-2">Khóa Học</h2>
+                <div class="w-24 h-1 bg-[#D2B48C] mx-auto mb-4"></div>
+                <p class="text-gray-700 max-w-2xl mx-auto">Các khóa học chuyên sâu về thiết kế nội thất và công nghệ 3D, giúp học viên nắm vững kiến thức và kỹ năng thực tiễn.</p>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+                <!-- AutoCAD -->
+                <div id="autocad" class="course-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                    <div class="flex items-center justify-center">
+                        <img src="/static/images/autocad.jpeg" class="h-full w-auto object-contain rounded-lg shadow-md">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-[#8B4513] mb-2">AutoCAD</h3>
+                        <p class="text-gray-700 mb-4">Khóa học AutoCAD chuyên sâu giúp học viên thành thạo công cụ thiết kế 2D và 3D phổ biến nhất trong ngành thiết kế nội thất.</p>
+                        <div id="autocad-detail" class="text-sm text-gray-600 hidden space-y-1 mb-3">
+                            <p>✔️ Học từ cơ bản đến nâng cao về AutoCAD 2D và 3D</p>
+                            <p>✔️ Hướng dẫn bài bản bởi giảng viên chuyên ngành</p>
+                            <p>✔️ Bài tập thực hành + file mẫu thực tế</p>
+                            <p>✔️ Cấp chứng chỉ hoàn thành khóa học</p>
+                        </div>
+                        <!-- Nút xem chi tiết -->
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#D2B48C] font-semibold"></span>
+                            <button onclick="toggleDetails('autocad-detail')" class="text-[#8B4513] hover:text-[#D2B48C] font-medium focus:outline-none">
+                    Chi tiết →
+                            </button>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#D2B48C] font-semibold"></span>
+                            <a href="#" class="text-[#8B4513] hover:text-[#D2B48C] font-medium"></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Vẽ Thiết kế SOFA -->
+                <div id="sofa" class="course-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                    <div class="flex items-center justify-center">
+                        <img src="/static/images/sofa.jpg" class="h-full w-auto object-contain rounded-lg shadow-md">
+                    </div>
+                        <div class="p-6">
+                        <h3 class="text-xl font-bold text-[#8B4513] mb-2">Vẽ Thiết kế SOFA</h3>
+                        <p class="text-gray-700 mb-4">Khóa học chuyên biệt về thiết kế sofa, từ phác thảo ý tưởng đến thiết kế chi tiết và mô phỏng 3D chuyên nghiệp.</p>
+                        <div id="sofa-detail" class="text-sm text-gray-600 hidden space-y-1 mb-3">
+                        <p>✔️ Hướng dẫn vẽ sofa từ bản vẽ đến mô hình 3D</p>
+                        <p>✔️ Học theo dự án thực tế tại xưởng</p>
+                        <p>✔️ Có giảng viên hỗ trợ 1-1</p>
+                        </div>
+                <!-- Nút xem chi tiết -->
+                        <div class="flex justify-between items-center">
+                        <span class="text-[#D2B48C] font-semibold"></span>
+                        <button onclick="toggleDetails('sofa-detail')" class="text-[#8B4513] hover:text-[#D2B48C] font-medium focus:outline-none">
+                            Chi tiết →
+                        </button>
+                        </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#D2B48C] font-semibold"></span>
+                            <a href="#" class="text-[#8B4513] hover:text-[#D2B48C] font-medium"></a>
+                        </div>
+                        </div>
+                        </div>
+                
+                <!-- Inventor -->
+                <div id="inventor" class="course-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                    <div class="flex items-center justify-center">
+                        <img src="/static/images/inventor.jpg" class="h-full w-auto object-contain rounded-lg shadow-md">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-[#8B4513] mb-2">Inventor</h3>
+                        <p class="text-gray-700 mb-4">Khóa học Inventor giúp học viên làm chủ phần mềm thiết kế 3D mạnh mẽ, tập trung vào thiết kế cơ khí và nội thất.</p>
+                        
+                <!-- Nội dung chi tiết ẩn -->
+                <div id="inventor-detail" class="text-sm text-gray-600 hidden space-y-1 mb-3">
+                    <p>✔️ Hướng dẫn thiết kế 3D, mô hình hóa và lắp ráp</p>
+                    <p>✔️ Áp dụng phần mềm Inventor chuyên sâu</p>
+                    <p>✔️ Học từ giảng viên có kinh nghiệm công nghiệp</p>
+                    <p>✔️ Cấp chứng nhận khi hoàn thành</p>
+                </div>
+
+                <!-- Nút xem chi tiết -->
+                <div class="flex justify-between items-center">
+                    <span class="text-[#D2B48C] font-semibold"></span>
+                    <button onclick="toggleDetails('inventor-detail')" class="text-[#8B4513] hover:text-[#D2B48C] font-medium focus:outline-none">
+                    Chi tiết →
+                    </button>
+                </div><div class="flex justify-between items-center">
+                            <span class="text-[#D2B48C] font-semibold"></span>
+                            <a href="#" class="text-[#8B4513] hover:text-[#D2B48C] font-medium"></a>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- SolidWorks -->
+                <div id="solidworks" class="course-card bg-white rounded-lg shadow-md overflow-hidden transition-all duration-300">
+                    <div class="flex items-center justify-center">
+                        <img src="/static/images/solid.jpg" class="h-full w-auto object-contain rounded-lg shadow-md">
+                    </div>
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-[#8B4513] mb-2">SolidWorks</h3>
+                        <p class="text-gray-700 mb-4">Khóa học SolidWorks toàn diện, từ cơ bản đến nâng cao, giúp học viên thiết kế sản phẩm nội thất chuyên nghiệp.</p>
+                <!-- Nội dung chi tiết ẩn -->
+                <div id="solidworks-detail" class="text-sm text-gray-600 hidden space-y-1 mb-3">
+                    <p>✔️ Thiết kế mô hình 3D với các công cụ SolidWorks</p>
+                    <p>✔️ Lắp ráp chi tiết, mô phỏng chuyển động</p>
+                    <p>✔️ Xuất bản vẽ kỹ thuật đúng chuẩn</p>
+                    <p>✔️ Tài liệu và bài tập đi kèm từng chương</p>
+                </div>
+
+                <!-- Nút xem chi tiết -->
+                <div class="flex justify-between items-center">
+                    <span class="text-[#D2B48C] font-semibold"></span>
+                    <button onclick="toggleDetails('solidworks-detail')" class="text-[#8B4513] hover:text-[#D2B48C] font-medium focus:outline-none">
+                    Chi tiết →
+                    </button>
+                </div>
+                        <div class="flex justify-between items-center">
+                            <span class="text-[#D2B48C] font-semibold"></span>
+                            <a href="#" class="text-[#8B4513] hover:text-[#D2B48C] font-medium"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Admission Section -->
+    <section id="admission" class="py-16 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-bold text-[#8B4513] mb-2">Thông Tin Tuyển Sinh</h2>
+                <div class="w-24 h-1 bg-[#D2B48C] mx-auto mb-4"></div>
+                <p class="text-gray-700 max-w-2xl mx-auto">Thông tin chi tiết về các khóa học, điều kiện đăng ký và quy trình tuyển sinh tại CLV Multimedia Academy.</p>
+            </div>
+            
+            <div class="flex flex-col md:flex-row gap-8">
+                <div class="md:w-1/2">
+                    <div class="bg-[#F5F5DC] rounded-lg p-6 mb-6">
+                        <h3 class="text-xl font-bold text-[#8B4513] mb-4">Điều kiện đăng ký</h3>
+                        <ul class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#8B4513] mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                Tốt nghiệp THPT hoặc tương đương
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#8B4513] mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                Có đam mê với thiết kế và mỹ thuật
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#8B4513] mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                Có kiến thức cơ bản về máy tính
+                            </li>
+                            <li class="flex items-start">
+                                <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 text-[#8B4513] mr-2 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                    <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zm3.707-9.293a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                                </svg>
+                                Cam kết tham gia đầy đủ khóa học
+                            </li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-[#F5F5DC] rounded-lg p-6">
+                        <h3 class="text-xl font-bold text-[#8B4513] mb-4">Quy trình đăng ký</h3>
+                        <ol class="space-y-4 text-gray-700">
+                            <li class="flex">
+                                <span class="bg-[#8B4513] text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">1</span>
+                                <div>
+                                    <h4 class="font-semibold text-[#8B4513]">Đăng ký trực tuyến</h4>
+                                    <p>Điền đầy đủ thông tin vào form đăng ký trên website</p>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <span class="bg-[#8B4513] text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">2</span>
+                                <div>
+                                    <h4 class="font-semibold text-[#8B4513]">Tư vấn</h4>
+                                    <p>Nhận tư vấn từ đội ngũ chuyên viên về khóa học phù hợp</p>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <span class="bg-[#8B4513] text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">3</span>
+                                <div>
+                                    <h4 class="font-semibold text-[#8B4513]">Hoàn tất hồ sơ</h4>
+                                    <p>Nộp các giấy tờ cần thiết và hoàn thành thủ tục đăng ký</p>
+                                </div>
+                            </li>
+                            <li class="flex">
+                                <span class="bg-[#8B4513] text-white rounded-full w-6 h-6 flex items-center justify-center mr-3 flex-shrink-0">4</span>
+                                <div>
+                                    <h4 class="font-semibold text-[#8B4513]">Nhập học</h4>
+                                    <p>Nhận lịch học và bắt đầu khóa học tại CLV Multimedia Academy</p>
+                                </div>
+                            </li>
+                        </ol>
+                    </div>
+                </div>
+                
+                <div class="md:w-1/2">
+                    <div class="bg-white rounded-lg shadow-lg p-6">
+                        <h3 class="text-3xl font-bold text-[#8B4513] mb-6 text-center">Đăng Ký Tư Vấn</h3>
+                        <form id="admission-form" method="POST" action="/submit">
+                            <div class="mb-4">
+                                <label for="fullname" class="block text-gray-700 font-medium mb-2">Họ và tên</label>
+                                <input type="text" name="fullname" placeholder="Họ tên" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#D2B48C]" required>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="phone" class="block text-gray-700 font-medium mb-2">Số điện thoại</label>
+                                <input type="text" name="phone" placeholder="Số điện thoại" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#D2B48C]" required>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="email" class="block text-gray-700 font-medium mb-2">Email</label>
+                                <input type="email" name="email" placeholder="Email" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#D2B48C]" required>
+                            </div>
+                            
+                            <div class="mb-4">
+                                <label for="course" class="block text-gray-700 font-medium mb-2">Khóa học</label>
+                                <select id="course" name="course" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#D2B48C]" required>
+                                    <option value="">-- Chọn khóa học --</option>
+                                    <option value="autocad">AutoCAD</option>
+                                    <option value="sofa">Vẽ Thiết kế SOFA</option>
+                                    <option value="inventor">Inventor</option>
+                                    <option value="solidworks">SolidWorks</option>
+                                </select>
+                            </div>
+                            
+                            <div class="mb-6">
+                                <label for="message" class="block text-gray-700 font-medium mb-2">Câu hỏi thêm (nếu có)</label>
+                                <textarea id="message" name="message" rows="4" class="w-full px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-[#D2B48C]"></textarea>
+                            </div>
+                            <div>
+                                <button type="submit" class="w-full bg-[#8B4513] hover:bg-[#A0522D] text-white font-bold py-3 px-4 rounded-md transition duration-300">Gửi đăng ký</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-[#8B4513] text-white py-12">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div>
+                    <div class="flex items-center mb-4">
+                        <img src="/static/images/logo CLV 2.jpg " width="60" height="40" viewBox="0 0 100 100" fill="none" class="mr-3">   
+                        <div>
+                            <h3 class="text-xl font-bold">CLV MULTIMEDIA ACADEMY</h3>
+                        </div>
+                    </div>
+                    <p class="mb-4">Đào tạo kỹ năng thiết kế nội thất chuyên nghiệp, mở ra cơ hội nghề nghiệp rộng mở cho học viên.</p>
+                    <div class="flex space-x-4">
+                        <a href="#" class="social-icon text-white hover:text-[#D2B48C]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"></path>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon text-white hover:text-[#D2B48C]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.33z"></path>
+                                <polygon points="9.75 15.02 15.5 11.75 9.75 8.48 9.75 15.02"></polygon>
+                            </svg>
+                        </a>
+                        <a href="#" class="social-icon text-white hover:text-[#D2B48C]">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17.5 2H6.5C4 2 2 4 2 6.5v11C2 20 4 22 6.5 22h11c2.5 0 4.5-2 4.5-4.5v-11C22 4 20 2 17.5 2Z"></path>
+                                <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37Z"></path>
+                                <path d="M17.5 6.5h0"></path>
+                            </svg>
+                        </a>
+                    </div>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Liên hệ</h3>
+                    <ul class="space-y-3">
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-10 w-10 mr-3 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                <path fill-rule="evenodd" d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z" clip-rule="evenodd" />
+                            </svg>
+                            <span>số 39, đường D18A-G4, khu phố 6, phường thới hòa, thành phố bến cát, tỉnh bình dương, việt nam</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M2 3a1 1 0 011-1h2.153a1 1 0 01.986.836l.74 4.435a1 1 0 01-.54 1.06l-1.548.773a11.037 11.037 0 006.105 6.105l.774-1.548a1 1 0 011.059-.54l4.435.74a1 1 0 01.836.986V17a1 1 0 01-1 1h-2C7.82 18 2 12.18 2 5V3z" />
+                            </svg>
+                            <span>0788.666.226</span>
+                        </li>
+                        <li class="flex items-start">
+                            <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 mr-3 mt-0.5" viewBox="0 0 20 20" fill="currentColor">
+                                <path d="M2.003 5.884L10 9.882l7.997-3.998A2 2 0 0016 4H4a2 2 0 00-1.997 1.884z" />
+                                <path d="M18 8.118l-8 4-8-4V14a2 2 0 002 2h12a2 2 0 002-2V8.118z" />
+                            </svg>
+                            <span>clv.multimediaacademy@gmail.com</span>
+                        </li>
+                    </ul>
+                </div>
+                
+                <div>
+                    <h3 class="text-xl font-bold mb-4">Bản đồ</h3>
+                    <div class="h-64 bg-[#D2B48C] rounded-lg overflow-hidden">
+                        <iframe 
+                            src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d244.68400066080443!2d106.6025434095828!3d11.11754796049484!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1svi!2s!4v1753615396701!5m2!1svi!2s" 
+                            width="100%" 
+                            height="100%" 
+                            style="border:0;" 
+                            allowfullscreen="" 
+                            loading="lazy" 
+                            referrerpolicy="no-referrer-when-downgrade">
+                        </iframe>
+                            <div class="absolute bottom-2 right-2 bg-white bg-opacity-80 px-2 py-1 rounded text-xs text-[#8B4513]">Google Maps</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="mt-8 pt-8 border-t border-[#D2B48C] text-center">
+                <p>&copy; 2025 CLV Multimedia Academy. Tất cả quyền được bảo lưu.</p>
+                <div class="mt-2 flex justify-center space-x-4 text-sm">
+                    <a href="#" class="hover:text-[#D2B48C]">Chính sách bảo mật</a>
+                    <a href="#" class="hover:text-[#D2B48C]">Điều khoản sử dụng</a>
+                </div>
+            </div>
+        </div>
+    </footer>
+<!-- thêm để hiển thị chi tiết -->
+    <script>
+        function toggleDetails(id) {
+        const element = document.getElementById(id);
+        element.classList.toggle('hidden');
+        }
+    </script>
+    <script>
+        // Mobile menu toggle
+        const menuToggle = document.getElementById('menu-toggle');
+        const mobileMenu = document.getElementById('mobile-menu');
+        
+        menuToggle.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Mobile dropdown toggle
+        const mobileDropdown = document.getElementById('mobile-dropdown');
+        const mobileDropdownMenu = document.getElementById('mobile-dropdown-menu');
+        
+        mobileDropdown.addEventListener('click', () => {
+            mobileDropdownMenu.classList.toggle('hidden');
+        });
+        
+        // Form submission
+        const admissionForm = document.getElementById('admission-form');
+            
+            // Get form values
+            const fullname = document.getElementById('fullname').value;
+            const phone = document.getElementById('phone').value;
+            const email = document.getElementById('email').value;
+            const course = document.getElementById('course').value;
+            
+            // In a real application, you would send this data to a server
+            // For demo purposes, we'll just show an alert
+            alert(`Cảm ơn ${fullname} đã đăng ký tư vấn! Chúng tôi sẽ liên hệ với bạn sớm nhất có thể.`);
+            
+            // Reset form
+            admissionForm.reset();
+        });
+        
+        // Smooth scrolling for anchor links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                const targetId = this.getAttribute('href');
+                if (targetId === '#') return;
+                
+                const targetElement = document.querySelector(targetId);
+                if (targetElement) {
+                    window.scrollTo({
+                        top: targetElement.offsetTop - 80,
+                        behavior: 'smooth'
+                    });
+                    
+                    // Close mobile menu if open
+                    if (!mobileMenu.classList.contains('hidden')) {
+                        mobileMenu.classList.add('hidden');
+                    }
+                }
+            });
+        });
+    </script>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+  {% if messages %}
+    <div class="mt-4 text-center">
+      {% for category, message in messages %}
+        <p class="text-green-700 bg-green-100 border border-green-300 px-4 py-2 rounded inline-block">
+          {{ message }}
+        </p>
+      {% endfor %}
+    </div>
+  {% endif %}
+{% endwith %}
+
+</body>
+</html>
